@@ -1,4 +1,4 @@
-# vvtt-gen
+# vvtt
 > vite + vue + ts + tailwindcss generate tool (nuxt style)
 
 It help you generate nuxt style folders and some config files.
