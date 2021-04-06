@@ -1,37 +1,10 @@
-#! /bin/sh
-
-set -e
-
-makedir(){
-  mkdir -p src/assets/css
-  mkdir -p src/layouts
-  mkdir -p src/middleware
-  mkdir -p src/pages
-  mkdir -p src/plugins
-  mkdir -p public/static
-  mkdir -p src/store
-  echo 'make nuxt style dir(s) done'
-}
-
-writefile() {
-  echo > postcss.config.js "module.exports = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  },
-}"
-  echo 'generate postcss.config.js done'
-
-  yarn run tailwind init tailwind.base.js --full
-  echo 'init postcss.base.js done, use offical templete to extand propety'
-
-  echo > tailwind.config.js "const colors = require('tailwindcss/colors')
+const colors = require('tailwindcss/colors')
 
 module.exports = {
   purge: [
     './index.html', 
     './src/**/*.{vue,js,ts,jsx,tsx}'
-  ], // Modify to match the framework file structure (ex. nuxt is not the same as vite)
+  ], // Modify to match the framework file structure (ex. nuxt is not the same as vite )
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
@@ -120,64 +93,4 @@ module.exports = {
   },
   },
   plugins: [],
-}"
-
-  echo 'generate tailwind.config.js done'
-
-  echo > src/assets/css/tailwind.css "@tailwind base;
-@tailwind components;
-@tailwind utilities;"
-  echo 'generate tailwind.css done'
-
-  if [ -f "src/main.ts" ]; then
-    echo >> src/main.ts "import './assets/css/tailwind.css'"
-    echo 'import tailwind.css to main.ts done, change order in IDE by yourself'
-  fi
-
-
-  if [ -f "src/main.js" ]; then
-    echo >> src/main.js "import './assets/css/tailwind.css'"
-    echo 'import tailwind.css to main.js done, change order in IDE by yourself'
-  fi
 }
-
-adddep(){
-  yarn add tailwindcss@latest postcss@latest autoprefixer@latest
-}
-
-newvite(){
-  yarn create @vitejs/app $@
-}
-
-command_exists() {
-  command -v "$@" > /dev/null
-}
-
-main(){
-
-  if !(command_exists yarn); then
-    echo "This script needs yarn installed to run."
-    exit 1
-  fi
-
-  echo 'vite + vue3 + ts + tailwindcss generator (nuxt style)'
-
-  if !(command_exists vite); then
-    read -p 'no vite installed, any key to installing vite' a
-    yarn global add vite
-  fi
-
-  if [ $# -eq 0 ] ; then
-    read -p '? Project name: › ' proj
-  else
-    proj=$@
-  fi
-
-  newvite $proj
-  cd ${PWD}/$proj
-  makedir
-  adddep
-  writefile
-}
-
-main $@
