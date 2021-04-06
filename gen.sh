@@ -23,7 +23,7 @@ writefile() {
   echo 'generate postcss.config.js done'
 
   yarn run tailwind init tailwind.base.js --full
-  echo 'init postcss.base.js done, use offical templete to extand propety'
+  echo 'init postcss.base.js done, use offcial templete to extand propety'
 
   echo > tailwind.config.js "const colors = require('tailwindcss/colors')
 
@@ -142,11 +142,11 @@ module.exports = {
 }
 
 adddep(){
-  yarn add tailwindcss@latest postcss@latest autoprefixer@latest
+  yarn add tailwindcss@npm:@tailwindcss/postcss7-compat @tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9
 }
 
-newvite(){
-  yarn create @vitejs/app $@
+newvue(){
+  vue create $@
 }
 
 command_exists() {
@@ -160,11 +160,11 @@ main(){
     exit 1
   fi
 
-  echo 'vite + vue3 + ts + tailwindcss generator (nuxt style)'
+  echo 'vue2 + js + tailwindcss generator (nuxt style)'
 
-  if !(command_exists vite); then
-    read -p 'no vite installed, any key to installing vite' a
-    yarn global add vite
+  if !(command_exists vue); then
+    read -p 'no @vue/cli installed, any key to installing @vue/cli' a
+    yarn global add @vue/cli
   fi
 
   if [ $# -eq 0 ] ; then
@@ -173,7 +173,7 @@ main(){
     proj=$@
   fi
 
-  newvite $proj
+  newvue $proj
   cd ${PWD}/$proj
   makedir
   adddep
