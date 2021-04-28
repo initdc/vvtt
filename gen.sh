@@ -142,7 +142,7 @@ module.exports = {
 }
 
 adddep(){
-  yarn add tailwindcss@latest postcss@latest autoprefixer@latest
+  yarn add -D tailwindcss@latest postcss@latest autoprefixer@latest
 }
 
 newvite(){
