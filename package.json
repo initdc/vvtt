@@ -1,0 +1,15 @@
+{
+  "name": "vvtt",
+  "version": "0.0.1",
+  "description": "vite + vue3 + ts + tailwindcss generator (nuxt style)",
+  "scripts": {
+    "code:prettier": "prettier --write ."
+  },
+  "repository": "git+https://github.com/initdc/vvtt.git",
+  "author": "initdc <initd@outlook.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^2.3.1",
+    "prettier-plugin-sh": "^0.6.1"
+  }
+}
