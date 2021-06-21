@@ -1,4 +1,5 @@
 # v2jt
+
 > vue2 + js + tailwindcss generator (nuxt style)
 
 > [vvtt](https://github.com/initdc/vvtt/tree/master) -
@@ -6,17 +7,15 @@
 
 It help you generate nuxt style folders and some config files.
 
-
 ## Quick Start
 
-use it one time 
+use it one time
 
 `sh <(curl -L v2jt.zsh.one)`
 
-
 > support args, will be the vite project name,
 
-run it with args: 
+run it with args:
 
 `sh <(curl -L v2jt.zsh.one) proj`
 

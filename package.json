@@ -1,0 +1,15 @@
+{
+  "name": "v2jt",
+  "version": "0.0.1",
+  "description": "vue2 + js + tailwindcss generator (nuxt style)",
+  "scripts": {
+    "code:prettier": "prettier --write ."
+  },
+  "repository": "git+https://github.com/initdc/v2jt.git",
+  "author": "initdc <initd@outlook.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^2.3.1",
+    "prettier-plugin-sh": "^0.6.1"
+  }
+}
