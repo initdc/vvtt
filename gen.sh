@@ -16,7 +16,7 @@ makedir() {
 writefile() {
   echo >postcss.config.js 'module.exports = {
   plugins: [
-    require("postcss-import"),
+    // require("postcss-import"),
     require("tailwindcss"),
     // require("postcss-nested"),
     // require("postcss-nesting"),
@@ -58,7 +58,7 @@ module.exports = {
         emerald: colors.emerald,
         teal: colors.teal,
         cyan: colors.cyan,
-        lightBlue: colors.lightBlue,
+        sky: colors.sky,
         blue: colors.blue,
         indigo: colors.indigo,
         violet: colors.violet,
@@ -214,7 +214,7 @@ adddep() {
 }
 
 newvite() {
-  yarn create @vitejs/app $@
+  yarn create vite $@
 }
 
 command_exists() {
