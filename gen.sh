@@ -32,23 +32,23 @@ writefile() {
 
 module.exports = {
   // mode: "jit",
-  purge: [
-    "./index.html", 
+  content: [
+    "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}"
   ], // Modify to match the framework file structure (eg. nuxt is not the same as vite )
-  darkMode: false, // or "media" or "class"
+  darkMode: "class", // or "media" or "class"
   theme: {
     extend: {
       colors: {
         transparent: "transparent",
         current: "currentColor",
-        white: colors.white,
         black: colors.black,
-        blueGray: colors.blueGray,
-        coolGray: colors.coolGray,
+        white: colors.white,
+        slate: colors.slate,
         gray: colors.gray,
-        trueGray: colors.trueGray,
-        warmGray: colors.warmGray,
+        zinc: colors.zinc,
+        neutral: colors.neutral,
+        stone: colors.stone,
         red: colors.red,
         orange: colors.orange,
         amber: colors.amber,
