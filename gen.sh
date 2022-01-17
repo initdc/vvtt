@@ -8,7 +8,7 @@ makedir() {
   mkdir -p src/middleware
   mkdir -p src/pages
   mkdir -p src/plugins
-  mkdir -p public/static
+  mkdir -p src/static
   mkdir -p src/store
   echo 'make nuxt style dir(s) done'
 }
@@ -188,8 +188,7 @@ module.exports = {
   },
   },
   plugins: [],
-}
-'
+}'
 
   echo 'generate tailwind.config.js done'
 
@@ -201,11 +200,39 @@ module.exports = {
   if [ -f "src/main.ts" ]; then
     echo >>src/main.ts "import './assets/css/tailwind.css'"
     echo 'import tailwind.css to main.ts done, change order in IDE by yourself'
+    echo >vite.config.ts 'const path = require("path");
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  resolve: {
+    alias: [
+      { find: "/static", replacement: path.resolve(__dirname, "./src/static") },
+    ],
+  },
+  plugins: [vue()],
+});'
+    echo 'generate vite.config.ts done'
   fi
 
   if [ -f "src/main.js" ]; then
     echo >>src/main.js "import './assets/css/tailwind.css'"
     echo 'import tailwind.css to main.js done, change order in IDE by yourself'
+    echo >vite.config.js 'const path = require("path");
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  resolve: {
+    alias: [
+      { find: "/static", replacement: path.resolve(__dirname, "./src/static") },
+    ],
+  },
+  plugins: [vue()],
+});'
+    echo 'generate vite.config.js done'
   fi
 }
 
@@ -218,7 +245,7 @@ newvite() {
 }
 
 command_exists() {
-  command -v "$@" >/dev/null
+  command -v $@ >/dev/null
 }
 
 main() {
